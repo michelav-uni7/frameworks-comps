@@ -9,7 +9,7 @@ public class EstoqueSimples implements Estoque {
 
 	@Override
 	public List<String> produtos() {
-		return List.of("Arroz", "Macarrão", "Açúcar", "Milho");
+		return List.of("Arroz", "Macarrao", "Acucar", "Milho");
 	}
 
 }
