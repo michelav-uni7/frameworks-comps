@@ -1,18 +1,28 @@
 package uni7.web;
 
 import java.io.IOException;
+
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class StatelessFrontServlet
- */
+import uni7.biz.SlBean;
+
+@WebServlet("/stateless")
 public class StatelessFrontServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1534951741361809472L;
+
+	@EJB private SlBean bean;
+	
+	/**
      * Default constructor. 
      */
     public StatelessFrontServlet() {
@@ -23,8 +33,8 @@ public class StatelessFrontServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String acao = request.getParameter("acao");
+		response.getWriter().append(bean.acao(acao));
 	}
 
 	/**
@@ -34,5 +44,4 @@ public class StatelessFrontServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

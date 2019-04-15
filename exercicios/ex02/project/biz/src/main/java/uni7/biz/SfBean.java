@@ -6,7 +6,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.ejb.LocalBean;
+import javax.ejb.PostActivate;
+import javax.ejb.PrePassivate;
 import javax.ejb.Remove;
 import javax.ejb.Stateful;
 
@@ -52,5 +56,24 @@ public class SfBean implements Serializable {
     	info.forEach(dado -> lista.add(dado));
     	return lista;
     }
+    
+    @PostConstruct
+    void postConstruct() {
+    	System.out.println("SfBean " + this.toString() + " foi construido!");
+    }
+    
+    @PreDestroy
+    void preDestroy() {
+    	System.out.println("SfBean " + this.toString() + " será destruido!");
+    }
 
+    @PrePassivate
+    void prePassivate() {
+    	System.out.println("SfBean " + this.toString() + " será passivado!");
+    }
+    
+    @PostActivate
+    void postActivate() {
+    	System.out.println("SfBean " + this.toString() + " foi ativado!");
+    }
 }

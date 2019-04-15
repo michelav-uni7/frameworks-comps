@@ -69,6 +69,7 @@ public class StatefulFrontServlet extends HttpServlet {
 			writer.append("<H2>Itens Processados:</H2>\n");
 			writer.append(buffer.toString());
 			writer.append("</BODY>");
+			request.getSession().invalidate();
 			break;
 		default:
 			break;
