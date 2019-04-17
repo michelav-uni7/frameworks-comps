@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>uni7</groupId>
+		<artifactId>loja</artifactId>
+		<version>1.0</version>
+	</parent>
+	<groupId>uni7.compras.app</groupId>
+	<artifactId>compras-app</artifactId>
+	<name>compras-app</name>
+	<packaging>ear</packaging>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>3.0.1</version>
+				<configuration>
+					<modules>
+						<ejbModule>
+							<groupId>uni7.compras.biz</groupId>
+							<artifactId>compras-biz</artifactId>
+							<bundleFileName>compras-biz.jar</bundleFileName>
+						</ejbModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>uni7.compras.biz</groupId>
+			<artifactId>compras-biz</artifactId>
+			<version>1.0</version>
+			<type>ejb</type>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
+</project>
