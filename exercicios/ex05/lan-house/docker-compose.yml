@@ -1,0 +1,21 @@
+version: "3"
+services:
+  lanhouse-db:
+    container_name: lanhouse-db
+    image: postgres:latest
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=lanhousedb
+    ports:
+      - 5432:5432
+  lanhouse-app:
+    container_name: lanhouse-app
+    build:
+      context: .
+      dockerfile: Dockerfile-app
+    ports:
+      - "8080:8080"
+      - "9990:9990"
+    depends_on:
+      - lanhouse-db
